@@ -6,4 +6,4 @@ app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });
 
-app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
+app.listen(process.env.PORT || port, () => console.log(`Hello world app listening on port ${port}!`))
