@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
     .getLatestScore(mysql)
     .then(function (row) {
       res.send(row);
-      console.log(row);
     })
     .catch((err) => console.log(err));
 });

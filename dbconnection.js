@@ -51,8 +51,6 @@ const getData = (mysql) => {
     "SELECT * FROM heroku_7d4cfb230efdcec.dellaronscore",
     (err, rows, fields) => {
       if (err) throw err;
-
-      console.log("Adatok: ", rows);
     }
   );
   connection.end();
