@@ -10,14 +10,18 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World, from express");
+  dbconnection
+    .getLatestScore(mysql)
+    .then(function (row) {
+      res.send(row);
+      console.log(row);
+    })
+    .catch((err) => console.log(err));
 });
 
 app.post("/", (req, res) => {
-  console.log(req.body.date);
   res.send("Got a POST request");
-  dbconnection.saveData(mysql, req.body.date, req.body.score);
-  // dbconnection.getData(mysql);
+  dbconnection.saveData(mysql, req.body.date, req.body.score, req.body.failure);
 });
 
 app.listen(process.env.PORT || port, () =>
