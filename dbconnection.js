@@ -24,7 +24,9 @@ const saveData = (mysql, date, score, failure) => {
     (err, rows, fields) => {
       if (err) console.log(err);
 
-      const newScore = rows[0].score + score;
+      let newScore = rows[0].score + score;
+      // 1000 pontonként nulláz
+      newScore = newScore > 1000 ? newScore - 1000 : newScore;
       //Frissíti az összes pontot
       const updateStr =
         "UPDATE `heroku_7d4cfb230efdcec`.`dellaronsumscore` SET `score` = '" +
